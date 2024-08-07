@@ -1,0 +1,149 @@
+body{
+    background-image:url(../images/Backgroundimage.jpg);
+    
+}
+
+h1{
+    background-color: darkolivegreen;
+    text-align: center;
+    color:antiquewhite;
+    font-size: 100px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+h2{
+    font-size: 30px;
+    background-color:rgb(137, 137, 43);
+}
+h3{
+    font-size: 20px;
+    background-color: darkslategrey;
+    color: aliceblue;
+}
+@media screen and (max-width:480px){
+    body{
+        background-color: rgb(8, 81, 56);
+    }
+  
+    h1{
+        font-size:xx-large;
+    }
+    h2{
+        font-size: x-large;
+    }
+    h3{
+        font-size: larger;
+    }
+    table,tr, td{
+        display: block;
+        
+    }
+    table tr{
+        padding-top: 50px;
+    }
+    th{
+        
+        display: none;
+        
+    }
+    .table-header{
+        display: none;
+    }
+    td img{
+        padding-top: 40px;
+        width: 200px;
+        
+    }
+}
+body{
+    font-size: 20px;
+}
+header ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 5px;
+    overflow: hidden;
+    background-color: rgb(7, 55, 7);
+    text-align: center;
+}
+header li{
+    font-size: 20px;
+    float: left;
+    text-align: center;
+    align-items: center;
+}
+header li a{
+    display: block;
+    color: rgb(224, 203, 10);
+    text-align: center;
+    padding: 8px;
+    text-decoration: none;
+}
+header li a:hover:not(.active){
+    background-color: blanchedalmond;
+    color: #388d23;
+}
+p,ul,ol{
+    background-color: #ffffff;
+    font-size: larger;
+}
+.first{
+    background-color: rgb(9, 65, 9);
+}
+.second{
+    background-color: rgb(41, 80, 7);
+}
+
+.table{
+    
+    border: 1px solid;
+    padding: 5px;
+    color: antiquewhite;
+    border: solid 1px;
+}
+table td{
+    text-align: left;
+    font-size: large;
+
+}
+
+table tfoot{
+    background-color:rgb(4, 56, 4);
+}
+.order{
+    width: 200px;
+}
+.price{
+    width: 200px;
+}
+.button{
+    border: solid black 3px;
+    color: antiquewhite;
+    padding: 10px 20px;
+    text-align: center;
+    display: inline-block;
+    background-color: rgb(120, 146, 16);
+    width: 170px;
+    height: 30px;
+}
+.button a{
+    color: white;
+}
+footer{
+    background-color: #000000;
+    color: #ffffff;
+    text-align: center;
+}
+h2 a {
+    font-size: xx-large;
+    color: #000000;
+    display: flex;
+    float: right;
+    padding-right: 100px;
+}
+.table-header{
+    background-color: #000000;
+    color: antiquewhite;
+}
+footer dl{
+    text-align: justify;
+}
