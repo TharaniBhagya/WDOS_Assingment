@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles/products.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_package_v0.16 (1)/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_package_v0.16 (1)/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_package_v0.16 (1)/favicon-16x16.png">
+    <link rel="manifest" href="manifest.json">
+    <link rel="mask-icon" href="/favicon_package_v0.16 (1)/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <header>
+        <h1>Grocies Supermarket</h1>
+
+        <nav>
+            <ul>
+                <li><a href="index.html">Home Page</a></li>
+                <li><a href="about_us.html">About Us</a></li>
+                <li><a href="Dairyproductpage.html">Dairy Product Page</a></li>
+                <li><a href="Vegetables.html">VegetablesPage</a></li>
+                <li><a href="Cosmeticandskincare.html">Cosmetic and Skin care Page</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="loyalytyregistrastion.html">Loyalty Registration Page</a></li>
+
+                </ul>
+        </nav>
+    </header>
+    <main>
+        <table id="cartTable">
+            <thead>
+                <tr>
+                    <th>Item Name</th>
+                    <th>Item Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <p>Final Total Price: Rs.<span id="finalTotalPrice"></span></p>
+    
+        <script src="cartFunctions.js"></script>
+
+        <h2>Make your payment and checkout</h2>
+        <form action="">
+            <fieldset>
+                <legend>Payment Methods</legend>
+                <input type="radio" id="method01" value="cash" name="pay_on_delivery">
+            <label for="method01">
+                <i class="fa-light fa-money-bill-1-wave"></i>
+                Cash On Delivery
+            </label>
+            <br>
+            <input type="radio" id="method02" value="credit/debit" name="cards">
+            <label for="method02">
+                <i class="fa-regular fa-credit-card"></i>
+                Credit/Debit Card
+            </label>
+            <br>
+            <input type="radio" id="method03" value="onlinemethod1" name="paypal">
+            <label for="method03">
+                <i class="fa-brands fa-cc-paypal"></i>
+                Paypal
+            </label>
+            <br>
+            <input type="radio" id="method04" value="onlinemethod2" name="lankapay">
+            <label for="method03">
+                <i class="fa-brands fa-cc-paypal"></i>
+                LankaPay
+            </label>
+            <br>
+            </fieldset>
+            <br><br>
+            <fieldset>
+                <legend>Billing Address</legend>
+                <label for="name">
+                    Billing Name:
+                </label>
+                <br>
+                <input type="name" id="name" name="name" maxlength="30" required>
+                <br>
+                <br>
+                <label for="email">
+                    E-Mail:
+                </label>
+                <br>
+                <input type="email" id="email" name="mail" maxlength="30" required>
+                <br>
+                <br>
+                <label for="mail">
+                    Address:
+                </label>
+                <br>
+                <input type="name" id="mail" name="mail" maxlength="30" required>
+                <br>
+                <br>
+                <label for="city">
+                    City:
+                </label>
+                <br>
+                <input type="name" id="city" name="city" maxlength="30" required>
+                <br>
+                <br>
+            </fieldset>
+            <br><br> 
+        </form>
+        <a>
+            <button id="msg">Pay Now</button>
+        </a>
+        <script src="javascript/2.js" defer></script>
+    </main>   
+    <footer>
+        
+        <dl>
+            <dt>Connect us via</dt>
+            <dd><i class="fa-brands fa-whatsapp"></i>  +94 123123987</dd>
+            <dd><i class="fa-brands fa-viber"></i>  +94 123123987</dd>
+            <dd><i class="fa-solid fa-envelope-open"></i>  grocies@gmail.com</dd>
+            <dd><i class="fa-brands fa-facebook"></i>  Grocies Supermarket</dd>
+            <dd><i class="fa-brands fa-instagram"></i>  Grocies Supermarket</dd>
+        </dl>
+        &copy;This is a copyrigthed website
+    </footer>
+    </body>
+</html>
