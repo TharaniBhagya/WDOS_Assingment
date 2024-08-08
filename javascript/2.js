@@ -5,15 +5,17 @@ document.addEventListener('DOMContentLoaded', function() {
     const finalTotalPriceElement = document.getElementById('finalTotalPrice');
     const saveFavoritesButton = document.getElementById('fav');
     const applyFavoritesButton = document.getElementById('addFav');
-    const msgButton = document.getElementById("msg");
-
-    // Function to update cart display and local storage
+    const payNowButton = document.getElementById("msg");
+    const checkoutForm = document.getElementById('checkoutForm');
+    
+    // update cart display and local storage
+    //  store the cart in the local storage to retrieve and display in the order page
     function updateCart() {
-        let cartData = []; // Array to hold cart data
+        let cartData = []; 
         let finalTotalPrice = 0;
 
         if (cartTableBody) {
-            cartTableBody.innerHTML = ''; // Clear the cart table
+            cartTableBody.innerHTML = ''; 
         }
 
         quantityInputs.forEach(function(input) {
@@ -24,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const itemPrice = parseFloat(box.querySelector('.price').textContent.replace('Rs.', ''));
                 const itemTotal = itemPrice * quantity;
 
-                // Add item data to cartData array
+                
                 cartData.push({
                     name: itemName,
                     price: itemPrice,
@@ -32,10 +34,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     total: itemTotal
                 });
 
-                // Update final total price
+                
                 finalTotalPrice += itemTotal;
 
-                // Add row to cart table if it exists
+             
                 if (cartTableBody) {
                     const newRow = document.createElement('tr');
                     newRow.innerHTML = `
@@ -49,23 +51,23 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        // Update final total price element
+      
         if (finalTotalPriceElement) {
             finalTotalPriceElement.textContent = `Rs.${finalTotalPrice.toFixed(2)}`;
         }
 
-        // Save data to local storage
+        
         localStorage.setItem('cartData', JSON.stringify(cartData));
         localStorage.setItem('finalTotalPrice', finalTotalPrice.toFixed(2));
     }
 
-    // Function to load cart data from local storage
+    // load cart - retrieve data from local storage
     function loadCart() {
         const cartData = JSON.parse(localStorage.getItem('cartData')) || [];
         const finalTotalPrice = localStorage.getItem('finalTotalPrice') || '0.00';
 
         if (cartTableBody) {
-            cartTableBody.innerHTML = ''; // Clear existing rows
+            cartTableBody.innerHTML = '';
         }
 
         cartData.forEach(function(item) {
@@ -81,13 +83,13 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        // Set final total price
+        
         if (finalTotalPriceElement) {
             finalTotalPriceElement.textContent = `Rs.${finalTotalPrice}`;
         }
     }
 
-    // Function to save cart to favorites
+    //save cart to favorites
     function saveCartToFavorites() {
         const cartData = JSON.parse(localStorage.getItem('cartData'));
         const finalTotalPrice = localStorage.getItem('finalTotalPrice');
@@ -105,29 +107,29 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Function to apply favorites to the cart
+    // apply favorites to the cart
     function applyFavorites() {
         const favoriteData = JSON.parse(localStorage.getItem('favoriteCartData'));
 
         if (favoriteData && favoriteData.cartData.length > 0) {
             localStorage.setItem('cartData', JSON.stringify(favoriteData.cartData));
             localStorage.setItem('finalTotalPrice', favoriteData.finalTotalPrice);
-  // Update the quantities of the input fields
+ 
   quantityInputs.forEach(function(input) {
     const box = input.closest('.box');
     const itemName = box.querySelector('.name').textContent.trim();
 
-    // Find the matching item in the favorite data
+   
     const favoriteItem = favoriteData.cartData.find(item => item.name === itemName);
         if (favoriteItem) {
             input.value = favoriteItem.quantity;
         } 
         else {
-            input.value = 0; // Set quantity to 0 if item is not in favorites
+            input.value = 0;
         }
     });
 
-    // Load favorites into the cart display
+    
     loadCart();
     } 
     else {
@@ -136,36 +138,39 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
 
-    // Function to show delivery message
-    function showDeliveryMessage() {
-        const currentDate = new Date();
-        const deliveryDate = new Date(currentDate);
-        deliveryDate.setDate(currentDate.getDate() + 2);
-        alert(`Your order has been successfully placed. You will receive your order on ${deliveryDate.toDateString()}.`);
-        localStorage.removeItem('cartData'); // Clear cart after order placement
-        localStorage.removeItem('finalTotalPrice'); // Clear final total price
-        loadCart(); // Clear the cart table
-    }
+   // pay now 
+   function handlePayment(event) {
+    event.preventDefault();
 
-    // Event  listeners
-    if (quantityInputs.length > 0) {
-        quantityInputs.forEach(function(input) {
-            input.addEventListener('change', updateCart);
-        });
+    if (checkoutForm.checkValidity()) {
+        alert('Your payment has been successfully processed.');
+    } else {
+        checkoutForm.reportValidity();
     }
+}
 
-    if (saveFavoritesButton) {
-        saveFavoritesButton.addEventListener('click', saveCartToFavorites);
-    }
+// Add event listeners 
 
-    if (applyFavoritesButton) {
-        applyFavoritesButton.addEventListener('click', applyFavorites);
-    }
+//quantity input
+quantityInputs.forEach(function(input) {
+    input.addEventListener('change', updateCart);
+});
 
-    if (msgButton) {
-        msgButton.addEventListener('click', showDeliveryMessage);
-    }
+//fav button
+if (saveFavoritesButton) {
+    saveFavoritesButton.addEventListener('click', saveCartToFavorites);
+}
 
-    // Load cart on page load
-    loadCart();
+// apply fav
+if (applyFavoritesButton) {
+    applyFavoritesButton.addEventListener('click', applyFavorites);
+}
+
+// pay now
+if (payNowButton) {
+    payNowButton.addEventListener('click', handlePayment);
+}
+
+// Load cart data on page load
+loadCart();
 });
