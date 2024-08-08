@@ -71,7 +71,7 @@ body{
 }
 .button{
     border: none;
-    color: black;
+    font-color: black;
     padding: 10px 20px;
     text-align: center;
     display: inline-block;
